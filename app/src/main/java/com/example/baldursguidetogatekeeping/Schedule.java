@@ -1,6 +1,12 @@
 package com.example.baldursguidetogatekeeping;
 
+import static android.content.ContentValues.TAG;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -11,14 +17,20 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Schedule extends AppCompatActivity {
 
+    private static final String TAG = "QuestList";
+
     RecyclerView recyclerView;
     Button addQuestButton;
+    QuestListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,19 +45,16 @@ public class Schedule extends AppCompatActivity {
 
         List<Quest> quests =  new ArrayList<>();
 
-        for(int i = 0; i < 10; i++){
-            Quest test =  new Quest();
-            test.setPrimary(true);
-            test.setName("TEST " + i);
-            test.setDescription("\"But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?\"");
-            test.setDateToDo(new Date());
+        addQuestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Entered quest creator");
+                Intent intent = new Intent(Schedule.this, AddQuest.class);
+                startActivityForResult(intent, 1);
+            }
+        });
 
-            quests.add(test);
-
-        }
-
-
-        QuestListAdapter adapter = new QuestListAdapter(quests);
+        adapter = new QuestListAdapter(quests);
 
         recyclerView.setAdapter(adapter);
 
@@ -54,5 +63,29 @@ public class Schedule extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK && requestCode == 1){
+            Log.i(TAG, "Quest added");
+            Quest newQuest =  new Quest();
+            newQuest.setPrimary(data.getBooleanExtra("primary",false));
+            newQuest.setName(data.getStringExtra("name"));
+            newQuest.setDescription(data.getStringExtra("description"));
+
+            String dateString = data.getStringExtra("date");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+            try {
+                newQuest.setDateToDo(sdf.parse(dateString));
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+            adapter.add(newQuest);
+
+        }
     }
 }

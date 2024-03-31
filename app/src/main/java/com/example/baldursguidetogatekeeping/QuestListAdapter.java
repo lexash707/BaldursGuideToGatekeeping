@@ -45,6 +45,11 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.Ques
         return quests.size();
     }
 
+    public void add(Quest newQuest){
+        quests.add(newQuest);
+        notifyDataSetChanged();
+    }
+
     public class QuestListHolder extends RecyclerView.ViewHolder {
 
         public TextView textView;
