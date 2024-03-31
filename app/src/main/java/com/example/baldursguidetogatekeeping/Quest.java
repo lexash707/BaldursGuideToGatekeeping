@@ -5,7 +5,7 @@ import java.util.Date;
 public class Quest {
     private String name;
     private String description;
-    private Date dateFound;
+    private Date dateToDo;
     private boolean primary;
 
     public Quest() {
@@ -28,12 +28,12 @@ public class Quest {
         this.description = description;
     }
 
-    public Date getDateFound() {
-        return dateFound;
+    public Date getDateToDo() {
+        return dateToDo;
     }
 
-    public void setDateFound(Date dateFound) {
-        this.dateFound = dateFound;
+    public void setDateToDo(Date dateToDo) {
+        this.dateToDo = dateToDo;
     }
 
     public boolean isPrimary() {

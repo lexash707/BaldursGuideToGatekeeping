@@ -14,7 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     private static final int SCHEDULE_REQUEST_CODE = 1;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "entered quest list");
-                Intent intent = new Intent(MainActivity.this, Schedule.class);
+                Intent intent = new Intent(MainMenu.this, Schedule.class);
                 startActivity(intent);
             }
         });

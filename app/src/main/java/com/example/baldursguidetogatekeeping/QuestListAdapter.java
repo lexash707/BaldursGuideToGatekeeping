@@ -36,7 +36,7 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.Ques
         holder.textView.setText(quests.get(position).getName());
         holder.isPrimary.setTag(position);
         holder.isPrimary.setChecked(quests.get(position).isPrimary());
-        holder.dateFound.setText(quests.get(position).getDateFound().toString());
+        holder.dateFound.setText(quests.get(position).getDateToDo().toString());
         holder.description.setText(quests.get(position).getDescription());
     }
 
