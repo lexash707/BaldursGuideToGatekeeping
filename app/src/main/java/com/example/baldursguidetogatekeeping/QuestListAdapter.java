@@ -1,10 +1,10 @@
 package com.example.baldursguidetogatekeeping;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.QuestListHolder> {
 
-    private List<Quest> quests;
+    private final List<Quest> quests;
 
     public QuestListAdapter(List<Quest> quests) {
         this.quests = quests;
@@ -45,12 +45,13 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.Ques
         return quests.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void add(Quest newQuest){
         quests.add(newQuest);
         notifyDataSetChanged();
     }
 
-    public class QuestListHolder extends RecyclerView.ViewHolder {
+    public static class QuestListHolder extends RecyclerView.ViewHolder {
 
         public TextView textView;
         public CheckBox isPrimary;
@@ -65,12 +66,7 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.Ques
             dateFound = view.findViewById(R.id.dateFound);
             description = view.findViewById(R.id.questDescription);
 
-            isPrimary.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    quests.get((Integer) buttonView.getTag()).setPrimary(isChecked);
-                }
-            });
+            isPrimary.setOnCheckedChangeListener((buttonView, isChecked) -> quests.get((Integer) buttonView.getTag()).setPrimary(isChecked));
         }
     }
 }
