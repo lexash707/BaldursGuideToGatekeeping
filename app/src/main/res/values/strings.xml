@@ -6,4 +6,9 @@
     <string name="weapons">Weapons</string>
     <string name="schedule">Schedule</string>
     <string name="new_quest">New Quest</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="primary">Primary</string>
+    <string name="pick_date">Pick Date</string>
 </resources>
