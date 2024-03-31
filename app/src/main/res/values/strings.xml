@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Baldurs Guide To Gatekeeping</string>
+    <string name="astarion_supremacy">WELCOME TO THE BALDURS GUIDE</string>
+    <string name="characters">Characters</string>
+    <string name="spells">Spells</string>
+    <string name="weapons">Weapons</string>
+    <string name="schedule">Schedule</string>
 </resources>
