@@ -47,27 +47,10 @@
         android:id="@+id/datePickBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/pick_date"
         app:layout_constraintStart_toStartOf="@+id/questName"
-        app:layout_constraintTop_toBottomOf="@+id/questDescriptionInput" />
-
-    <EditText
-        android:id="@+id/questDescriptionInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/description"
-        android:inputType="textMultiLine"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questName" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionInput" />
 
     <TextView
         android:id="@+id/pickedDate"
@@ -85,13 +68,13 @@
         android:layout_marginBottom="40dp"
         android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintEnd_toStartOf="@+id/cancelBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/cancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@android:string/cancel"
@@ -115,7 +98,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/description"
-        app:layout_constraintBottom_toTopOf="@+id/questDescriptionInput"
+        app:layout_constraintBottom_toTopOf="@+id/descriptionInput"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/questName" />
+
+    <EditText
+        android:id="@+id/descriptionInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/description"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questName"
+        android:autofillHints="" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
