@@ -1,7 +1,5 @@
 package com.example.baldursguidetogatekeeping;
 
-import static android.content.ContentValues.TAG;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,10 +15,12 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baldursguidetogatekeeping.util.QuestUtils;
+
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -37,13 +37,19 @@ public class Schedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_schedule);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        addQuestButton = (Button) findViewById(R.id.addQuestButton);
+        recyclerView = findViewById(R.id.recyclerView);
+        addQuestButton = findViewById(R.id.addQuestButton);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<Quest> quests =  new ArrayList<>();
+
+        List<Quest> quests = null;
+        try {
+            quests = QuestUtils.readQuestsFromFile(getApplicationContext(), "questline.txt");
+        } catch (IOException e) {
+            quests = new ArrayList<>();
+        }
 
         addQuestButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,10 +75,10 @@ public class Schedule extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == Activity.RESULT_OK && requestCode == 1){
+        if (resultCode == Activity.RESULT_OK && requestCode == 1) {
             Log.i(TAG, "Quest added");
-            Quest newQuest =  new Quest();
-            newQuest.setPrimary(data.getBooleanExtra("primary",false));
+            Quest newQuest = new Quest();
+            newQuest.setPrimary(data.getBooleanExtra("primary", false));
             newQuest.setName(data.getStringExtra("name"));
             newQuest.setDescription(data.getStringExtra("description"));
 
@@ -85,6 +91,11 @@ public class Schedule extends AppCompatActivity {
             }
 
             adapter.add(newQuest);
+            try {
+                QuestUtils.writeQuestsToFile(getApplicationContext(), "questline.txt", adapter.getQuests());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
         }
     }

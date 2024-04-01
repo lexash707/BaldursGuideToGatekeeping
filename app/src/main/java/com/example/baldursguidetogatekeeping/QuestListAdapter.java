@@ -20,6 +20,10 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.Ques
         this.quests = quests;
     }
 
+    public List<Quest> getQuests() {
+        return quests;
+    }
+
     @NonNull
     @Override
     public QuestListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -46,7 +50,7 @@ public class QuestListAdapter extends RecyclerView.Adapter<QuestListAdapter.Ques
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void add(Quest newQuest){
+    public void add(Quest newQuest) {
         quests.add(newQuest);
         notifyDataSetChanged();
     }

@@ -1,5 +1,7 @@
 package com.example.baldursguidetogatekeeping;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 public class Quest {
@@ -10,6 +12,13 @@ public class Quest {
 
     public Quest() {
 
+    }
+
+    public Quest(String name, String description, Date date, boolean primary) {
+        this.name = name;
+        this.description = description;
+        this.dateToDo = date;
+        this.setPrimary(primary);
     }
 
     public String getName() {
@@ -42,5 +51,16 @@ public class Quest {
 
     public void setPrimary(boolean primary) {
         this.primary = primary;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "Quest{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", dateToDo=" + dateToDo +
+                ", primary=" + primary +
+                '}';
     }
 }
