@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baldursguidetogatekeeping.database.DatabaseClient;
 import com.example.baldursguidetogatekeeping.util.QuestUtils;
 
 import java.io.IOException;
@@ -35,6 +36,7 @@ public class Schedule extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i(TAG, String.valueOf((long) DatabaseClient.getInstance(getApplicationContext()).getDatabase().characterDAO().getAll().size()));
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_schedule);
         recyclerView = findViewById(R.id.recyclerView);

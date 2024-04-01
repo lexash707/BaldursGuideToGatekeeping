@@ -9,7 +9,7 @@ public class DatabaseClient {
     private final Database appDatabase;
 
     private DatabaseClient(Context context) {
-        appDatabase = Room.databaseBuilder(context, Database.class, "baldur_data").build();
+        appDatabase = Room.databaseBuilder(context, Database.class, "baldur_data").allowMainThreadQueries().addCallback(DataSeeder.databaseCallback).build();
     }
 
     public static synchronized DatabaseClient getInstance(Context context) {
