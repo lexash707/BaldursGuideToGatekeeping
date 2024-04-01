@@ -32,7 +32,9 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".QuestReminderReceiver" />
+        <receiver
+            android:name=".util.QuestReminderReceiver"
+            android:exported="false" />
     </application>
 
 </manifest>

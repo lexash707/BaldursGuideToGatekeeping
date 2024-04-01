@@ -1,11 +1,14 @@
 package com.example.baldursguidetogatekeeping.util;
 
+import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.util.Log;
 
 import com.example.baldursguidetogatekeeping.Quest;
 
@@ -79,24 +82,37 @@ public class QuestUtils {
 
     public static void scheduleQuestNotification(Context context, Quest quest) {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        if (alarmManager == null) return; // Early exit if alarmManager is null
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (alarmManager != null && !alarmManager.canScheduleExactAlarms()) {
-                Intent intent = new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // Add this line
-                context.startActivity(intent);
-                return; // Stop further execution since we can't schedule the alarm yet
-            }
+        // Check if the app targets Android 12 (S) or higher and whether it can schedule exact alarms
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && !alarmManager.canScheduleExactAlarms()) {
+            // If not, prompt the user to allow the permission in settings
+            Intent intent = new Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+            return; // Exit the method to prevent further execution
+        }
+
+        long triggerAtMillis = quest.getDateToDo().getTime() + 3900000;
+        long currentTimeMillis = System.currentTimeMillis();
+
+        // If the scheduled time is in the past, adjust it to trigger a short time in the future
+        if (triggerAtMillis <= currentTimeMillis) {
+            triggerAtMillis = currentTimeMillis + 60000; // For example, adjust to fire in 60 seconds
         }
 
         Intent intent = new Intent(context, QuestReminderReceiver.class);
         intent.putExtra("questName", quest.getName());
         intent.putExtra("questDescription", quest.getDescription());
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, quest.hashCode(), intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+        // Use a unique request code for the PendingIntent to ensure it's a distinct alarm
+        int requestCode = (quest.getName() + quest.getDateToDo().toString()).hashCode();
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        if (alarmManager != null) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, quest.getDateToDo().getTime(), pendingIntent);
-        }
+        // Schedule the exact alarm
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
+
+        Log.i(TAG, "NANANANANANANANANANANANANANAN SISBOOOOOOOOOOOC");
     }
+
 }
