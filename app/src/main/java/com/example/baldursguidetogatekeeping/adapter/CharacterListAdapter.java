@@ -1,4 +1,4 @@
-package com.example.baldursguidetogatekeeping;
+package com.example.baldursguidetogatekeeping.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baldursguidetogatekeeping.R;
 import com.example.baldursguidetogatekeeping.model.PlayableCharacter;
 
 import java.util.List;

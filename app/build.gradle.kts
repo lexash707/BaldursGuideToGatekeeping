@@ -56,7 +56,7 @@ dependencies {
     implementation(libs.activity)
     implementation(libs.constraintlayout)
     implementation(libs.room.common)
-    implementation("org.projectlombok:lombok:1.18.28")
+    implementation(libs.lombok)
     implementation(libs.room.runtime)
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.activity.compose)
@@ -73,5 +73,7 @@ dependencies {
     annotationProcessor(libs.room.compiler)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    implementation("com.squareup.retrofit2:converter-jackson:2.1.0")
 
 }

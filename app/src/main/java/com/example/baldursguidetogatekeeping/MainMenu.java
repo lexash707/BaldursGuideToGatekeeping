@@ -42,7 +42,7 @@ public class MainMenu extends AppCompatActivity {
         characters = findViewById(R.id.characterMenuBtn);
 
         characters.setOnClickListener(v -> {
-            Log.i(TAG, "entered quest list");
+            Log.i(TAG, "entered character list");
             Intent intent = new Intent(MainMenu.this, CharacterOverview.class);
             startActivity(intent);
         });
@@ -50,13 +50,21 @@ public class MainMenu extends AppCompatActivity {
         weapons = findViewById(R.id.weaponMenuBtn);
 
         weapons.setOnClickListener(v -> {
-            Log.i(TAG, "entered quest list");
+            Log.i(TAG, "entered weapon list");
             Intent intent = new Intent(MainMenu.this, WeaponOverview.class);
             startActivity(intent);
         });
 
+        spells = findViewById(R.id.spellMenuBtn);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        spells.setOnClickListener(v -> {
+            Log.i(TAG, "entered spell list");
+            Intent intent = new Intent(MainMenu.this, SpellOverview.class);
+            startActivity(intent);
+        });
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.spellView), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;

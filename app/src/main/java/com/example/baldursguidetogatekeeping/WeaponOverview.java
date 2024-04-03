@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.baldursguidetogatekeeping.adapter.WeaponListAdapter;
 import com.example.baldursguidetogatekeeping.database.DatabaseClient;
 import com.example.baldursguidetogatekeeping.model.Weapon;
 
@@ -41,7 +42,7 @@ public class WeaponOverview extends AppCompatActivity {
 
         weaponView.setAdapter(adapter);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.spellView), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
