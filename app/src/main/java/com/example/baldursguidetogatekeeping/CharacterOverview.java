@@ -39,7 +39,7 @@ public class CharacterOverview extends AppCompatActivity {
                 .getAll();
 
 
-        adapter = new CharacterListAdapter(characters);
+        adapter = new CharacterListAdapter(characters, CharacterOverview.this);
 
         characterView.setAdapter(adapter);
 
