@@ -28,11 +28,11 @@ public class Weapon {
     @ColumnInfo(name = "ranged")
     private boolean ranged;
 
-    @ColumnInfo(name = "image_path")
-    private String imagePath;
+    @ColumnInfo(name = "image")
+    private int imagePath;
 
 
-    public Weapon(String name, int baseDamage, boolean ranged, String imagePath) {
+    public Weapon(String name, int baseDamage, boolean ranged, int imagePath) {
         this.name = name;
         this.baseDamage = baseDamage;
         this.ranged = ranged;
@@ -55,7 +55,7 @@ public class Weapon {
         return ranged;
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
@@ -75,7 +75,7 @@ public class Weapon {
         this.ranged = ranged;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(int imagePath) {
         this.imagePath = imagePath;
     }
 }

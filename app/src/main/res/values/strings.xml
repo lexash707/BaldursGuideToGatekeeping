@@ -11,4 +11,5 @@
     <string name="save">Save</string>
     <string name="primary">Primary</string>
     <string name="pick_date">Pick Date</string>
+    <string name="title_activity_character_overview">CharacterOverview</string>
 </resources>

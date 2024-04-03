@@ -5,7 +5,6 @@ import static android.content.ContentValues.TAG;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -28,17 +27,24 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+//        deleteDatabase("baldur_data");
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         schedule = findViewById(R.id.scheduleBtn);
-        schedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "entered quest list");
-                Intent intent = new Intent(MainMenu.this, Schedule.class);
-                startActivity(intent);
-            }
+        schedule.setOnClickListener(v -> {
+            Log.i(TAG, "entered quest list");
+            Intent intent = new Intent(MainMenu.this, Schedule.class);
+            startActivity(intent);
+        });
+
+        characters = findViewById(R.id.characterMenuBtn);
+
+        characters.setOnClickListener(v -> {
+            Log.i(TAG, "entered quest list");
+            Intent intent = new Intent(MainMenu.this, CharacterOverview.class);
+            startActivity(intent);
         });
 
 

@@ -29,10 +29,10 @@ public class PlayableCharacter {
     @ColumnInfo(name = "description")
     private String description;
 
-    @ColumnInfo(name = "image_path")
-    private String imagePath;
+    @ColumnInfo(name = "image")
+    private int imagePath;
 
-    public PlayableCharacter(String name, String characterClass, String race, String description, String imagePath) {
+    public PlayableCharacter(String name, String characterClass, String race, String description, int imagePath) {
         this.name = name;
         this.characterClass = characterClass;
         this.race = race;
@@ -81,11 +81,11 @@ public class PlayableCharacter {
         this.description = description;
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(int imagePath) {
         this.imagePath = imagePath;
     }
 }
