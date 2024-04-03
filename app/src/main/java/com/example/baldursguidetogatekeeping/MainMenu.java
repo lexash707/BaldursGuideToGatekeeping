@@ -47,6 +47,14 @@ public class MainMenu extends AppCompatActivity {
             startActivity(intent);
         });
 
+        weapons = findViewById(R.id.weaponMenuBtn);
+
+        weapons.setOnClickListener(v -> {
+            Log.i(TAG, "entered quest list");
+            Intent intent = new Intent(MainMenu.this, WeaponOverview.class);
+            startActivity(intent);
+        });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
