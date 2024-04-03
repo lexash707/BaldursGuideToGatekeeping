@@ -31,7 +31,6 @@ public class WeaponListAdapter extends RecyclerView.Adapter<WeaponListAdapter.We
         return new WeaponListAdapter.WeaponListHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull WeaponListAdapter.WeaponListHolder holder, int position) {
         holder.weaponName.setText(weapons.get(position).getName());
