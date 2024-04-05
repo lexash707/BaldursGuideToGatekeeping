@@ -33,8 +33,7 @@ public class DataSeeder {
         }.execute();
     }
 
-    // Optionally, you can use Room's RoomDatabase.Callback to seed the database during creation
-    protected static RoomDatabase.Callback databaseCallback = new RoomDatabase.Callback() {
+        protected static RoomDatabase.Callback databaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
