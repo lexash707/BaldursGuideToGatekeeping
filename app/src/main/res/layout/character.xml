@@ -15,14 +15,17 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:contentDescription="@string/todo" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"
+        android:fontFamily="@font/playfair_display"
+        app:layout_constraintEnd_toStartOf="@+id/changeCharBtn"
         app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="@+id/avatar" />
 
@@ -31,6 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Class"
+        android:textColor="@color/white"
+        android:fontFamily="@font/playfair_display"
         app:layout_constraintBottom_toTopOf="@+id/race"
         app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -40,7 +45,9 @@
         android:id="@+id/race"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Race"
+        android:text="@string/race"
+        android:textColor="@color/white"
+        android:fontFamily="@font/playfair_display"
         app:layout_constraintBottom_toBottomOf="@+id/avatar"
         app:layout_constraintEnd_toEndOf="@+id/characterClass"
         app:layout_constraintStart_toStartOf="@+id/characterClass" />
@@ -51,5 +58,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="179dp" />
+
+    <Button
+        android:id="@+id/changeCharBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:text="@string/change"
+        style="@style/Widget.AppTheme.Button"
+        app:layout_constraintBottom_toTopOf="@+id/delCharBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/delCharBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        style="@style/Widget.AppTheme.Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/changeCharBtn"
+        app:layout_constraintStart_toStartOf="@+id/changeCharBtn"
+        app:layout_constraintTop_toBottomOf="@+id/changeCharBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

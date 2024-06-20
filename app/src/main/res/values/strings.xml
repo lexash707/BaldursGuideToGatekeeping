@@ -14,4 +14,10 @@
     <string name="title_activity_character_overview">CharacterOverview</string>
     <string name="speak">Speak</string>
     <string name="close">Close</string>
+    <string name="add_character">Add Character</string>
+    <string name="todo">TODO</string>
+    <string name="race">Race</string>
+    <string name="change">Change</string>
+    <string name="delete">Delete</string>
+    <string name="add_spell">Add Spell</string>
 </resources>

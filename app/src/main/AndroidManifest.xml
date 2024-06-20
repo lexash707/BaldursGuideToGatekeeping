@@ -20,10 +20,12 @@
         tools:targetApi="31">
         <activity
             android:name=".SpellOverview"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.BaldursGuideToGatekeeping" />
         <activity
             android:name=".WeaponOverview"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.BaldursGuideToGatekeeping" />
         <activity
             android:name=".CharacterOverview"
             android:exported="false"
@@ -31,16 +33,18 @@
             android:theme="@style/Theme.BaldursGuideToGatekeeping" />
         <activity
             android:name=".AddQuest"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.BaldursGuideToGatekeeping" />
         <activity
             android:name=".Schedule"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.BaldursGuideToGatekeeping" />
         <activity
             android:name=".MainMenu"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.BaldursGuideToGatekeeping">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

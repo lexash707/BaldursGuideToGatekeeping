@@ -93,7 +93,7 @@ public class QuestUtils {
             return; // Exit the method to prevent further execution
         }
 
-        long triggerAtMillis = quest.getDateToDo().getTime() + 3900000;
+        long triggerAtMillis = quest.getDateToDo().getTime() + 5460000;
         long currentTimeMillis = System.currentTimeMillis();
 
         // If the scheduled time is in the past, adjust it to trigger a short time in the future
