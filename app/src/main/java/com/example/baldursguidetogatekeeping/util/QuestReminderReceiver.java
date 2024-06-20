@@ -23,7 +23,7 @@ public class QuestReminderReceiver extends BroadcastReceiver {
         Notification.Builder builder = new Notification.Builder(context, channelId)
                 .setContentTitle(questName)
                 .setContentText(questDescription)
-                .setSmallIcon(R.drawable.ic_notification) // Ensure you have a drawable resource for the icon
+                .setSmallIcon(R.drawable.ic_notification)
                 .setAutoCancel(true);
 
         notificationManager.notify(0, builder.build());
