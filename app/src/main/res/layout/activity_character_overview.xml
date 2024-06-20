@@ -22,6 +22,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:text="@string/add_character"
+        style="@style/Widget.AppTheme.Button"
         app:layout_constraintBottom_toTopOf="@+id/characterView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

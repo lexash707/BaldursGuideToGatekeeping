@@ -11,7 +11,8 @@
         android:id="@+id/addQuestButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/new_quest" />
+        android:text="@string/new_quest"
+        style="@style/Widget.AppTheme.Button" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

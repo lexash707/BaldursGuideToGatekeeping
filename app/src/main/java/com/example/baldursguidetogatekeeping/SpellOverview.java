@@ -43,7 +43,7 @@ public class SpellOverview extends AppCompatActivity {
         spellView.setLayoutManager(layoutManager);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://astarionsupremacy.morava.in.rs:8080")
+                .baseUrl("http://192.168.0.2:8080")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
 
